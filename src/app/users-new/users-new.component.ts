@@ -1,4 +1,4 @@
-import { Component, computed, EventEmitter, input, Input, Output } from '@angular/core';
+import { Component, computed, EventEmitter, input, Input, output, Output } from '@angular/core';
 
 @Component({
   selector: 'app-users-new',
@@ -11,7 +11,9 @@ export class UsersNewComponent {
   @Input({required: true}) id!: string;
   @Input({required: true}) avatar!: string;
   @Input({required: true}) name!: string;
-  @Output() select = new EventEmitter();
+  // @Output() select = new EventEmitter();
+
+  
   
   get imagePath() {
     return 'assets/users/' + this.avatar;
@@ -20,6 +22,9 @@ export class UsersNewComponent {
   // Using signal methods
   // avatar = input.required<string>();
   // name = input.required<string>();
+
+  //signal output method
+  select = output<string>()
 
   // imagePath = computed(() => {
   //   return 'assets/users/' + this.avatar();
