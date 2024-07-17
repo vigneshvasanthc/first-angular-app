@@ -11,7 +11,7 @@ export class UsersNewComponent {
   @Input({required: true}) id!: string;
   @Input({required: true}) avatar!: string;
   @Input({required: true}) name!: string;
-  // @Output() select = new EventEmitter();
+  @Output() select = new EventEmitter<string>();
 
   
   
@@ -24,7 +24,7 @@ export class UsersNewComponent {
   // name = input.required<string>();
 
   //signal output method
-  select = output<string>()
+  // select = output<string>()
 
   // imagePath = computed(() => {
   //   return 'assets/users/' + this.avatar();
