@@ -7,16 +7,16 @@
       </li>
       <p>New users work!</p>
       <li>
-        <app-users-new [avatar]="usersNew[0].avatar" [name]="usersNew[0].name" />
+        <app-users-new [id]="usersNew[0].id" [avatar]="usersNew[0].avatar" [name]="usersNew[0].name" (select)="onSelectUser($event)" />
       </li>
       <li>
-        <app-users-new [avatar]="usersNew[1].avatar" [name]="usersNew[1].name" />
+        <app-users-new [id]="usersNew[1].id" [avatar]="usersNew[1].avatar" [name]="usersNew[1].name" (select)="onSelectUser($event)" />
       </li>
       <li>
-        <app-users-new [avatar]="usersNew[2].avatar "[name]="usersNew[2].name" />
+        <app-users-new [id]="usersNew[2].id" [avatar]="usersNew[2].avatar "[name]="usersNew[2].name" (select)="onSelectUser($event)" />
       </li>
       <li>
-        <app-users-new [avatar]="usersNew[3].avatar" [name]="usersNew[3].name" />
+        <app-users-new [id]="usersNew[3].id" [avatar]="usersNew[3].avatar" [name]="usersNew[3].name" (select)="onSelectUser($event)" />
       </li>
     </ul>
   </main>
