@@ -1,5 +1,17 @@
 import { Component, computed, EventEmitter, input, Input, output, Output } from '@angular/core';
 
+
+// type User = {
+//   id: string;
+//   avatar: string;
+//   name: string;
+// }
+
+interface IUser {
+  id: string;
+  avatar: string;
+  name: string;
+}
 @Component({
   selector: 'app-users-new',
   standalone: true,
@@ -8,15 +20,15 @@ import { Component, computed, EventEmitter, input, Input, output, Output } from 
   styleUrl: './users-new.component.scss'
 })
 export class UsersNewComponent {
-  @Input({required: true}) id!: string;
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
+  // @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
+  @Input({required: true}) user!: IUser;
   @Output() select = new EventEmitter<string>();
 
-  
-  
+
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   // Using signal methods
@@ -31,6 +43,7 @@ export class UsersNewComponent {
   // })
 
   onSelectUser(): void {
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
+    console.log(this.select.emit(this.user.id))
   }
 }
