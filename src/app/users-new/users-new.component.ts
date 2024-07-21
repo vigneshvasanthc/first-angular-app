@@ -1,4 +1,5 @@
 import { Component, computed, EventEmitter, input, Input, output, Output } from '@angular/core';
+import { IUser } from './users-new.model';
 
 
 // type User = {
@@ -7,11 +8,7 @@ import { Component, computed, EventEmitter, input, Input, output, Output } from 
 //   name: string;
 // }
 
-interface IUser {
-  id: string;
-  avatar: string;
-  name: string;
-}
+
 @Component({
   selector: 'app-users-new',
   standalone: true,
@@ -24,7 +21,8 @@ export class UsersNewComponent {
   // @Input({required: true}) avatar!: string;
   // @Input({required: true}) name!: string;
   @Input({required: true}) user!: IUser;
-  @Output() select = new EventEmitter<string>();
+  @Input({required: true}) selected!: boolean;
+  @Output() select = new EventEmitter();
 
 
   get imagePath() {

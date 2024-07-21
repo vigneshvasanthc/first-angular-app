@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AssignTaskComponent } from "./assign-task/assign-task.component";
+import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -7,11 +7,11 @@ import { NgFor, NgIf } from '@angular/common';
   standalone: true,
   imports: [AssignTaskComponent, NgFor, NgIf],
   templateUrl: './tasks.component.html',
-  styleUrl: './tasks.component.scss'
+  styleUrl: './tasks.component.scss',
 })
 export class TasksComponent {
-  @Input({required: true}) userId!: string;
-  @Input({required: true}) name!: string;
+  @Input({ required: true }) userId!: string;
+  @Input({ required: true }) name!: string;
 
   assignTasks = [
     {
@@ -40,9 +40,13 @@ export class TasksComponent {
   ];
 
   get selectedUserTasks() {
-    return this.assignTasks.filter((task) => {
-      task.userId === this.userId;
-    })
+    return this.assignTasks.filter((task) => task.userId === this.userId);
+  }
+
+  onCompleteTask(id: string) {
+    console.log('this is id value' + ' ' + id);
+    this.assignTasks = this.assignTasks.filter((task) => task.id !== id)
+    
   }
 
   // name!='TASK OF THE USERS';

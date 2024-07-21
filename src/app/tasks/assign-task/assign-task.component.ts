@@ -1,12 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ITasks } from './assign-task.model';
 
-interface ITasks {
-  id: string,
-  userId: string,
-  title: string,
-  summary: string,
-  dueDate: string
-}
+
 
 @Component({
   selector: 'app-assign-task',
@@ -16,6 +11,11 @@ interface ITasks {
   styleUrl: './assign-task.component.scss'
 })
 export class AssignTaskComponent {
-  @Input() task!: ITasks;
+  @Input({required: true}) task!: ITasks;
+  @Output() complete = new EventEmitter<string>();
+
+  onCompleteTask() {
+    this.complete.emit(this.task.id);
+  }
 
 }

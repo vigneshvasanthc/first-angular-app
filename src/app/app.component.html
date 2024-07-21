@@ -1,16 +1,15 @@
 <app-header />
 
-  <main>
-    <ul id="users">
-     
-      <li>
-        <app-user/>
-      </li>
-      <p>New users work!</p> 
-        <li *ngFor="let user of usersNew">
-          <app-users-new [user]="user" (select)="onSelectUser($event)" />
-        </li>
-      <!-- <li>
+<main>
+  <ul id="users">
+    <li>
+      <app-user />
+    </li>
+    <p>New users work!</p>
+    <li *ngFor="let user of usersNew">
+      <app-users-new [user]="user" [selected]="user.id === selectedUserId" (select)="onSelectUser($event)" />
+    </li>
+    <!-- <li>
         <app-users-new [user]="usersNew[1]" (select)="onSelectUser($event)" />
       </li>
       <li>
@@ -19,17 +18,18 @@
       <li>
         <app-users-new [user]="usersNew[3]" (select)="onSelectUser($event)" />
       </li> -->
-    </ul>
-      <app-tasks *ngIf="selectedUser; else fallBack" [userId]="selectedUser.id" [name]="selectedUser.name"/>
-      
-      <ng-template #fallBack>
-        <p id="fallBack">Select user to see their tasks!</p>
-      </ng-template>
-      
-    
-  </main>
+  </ul>
+  <app-tasks
+    *ngIf="selectedUser; else fallBack"
+    [userId]="selectedUser.id"
+    [name]="selectedUser.name"
+  />
+
+  <ng-template #fallBack>
+    <p id="fallBack">Select user to see their tasks!</p>
+  </ng-template>
+</main>
 
 <!-- <app-user></app-user> -->
-
 
 <router-outlet />
