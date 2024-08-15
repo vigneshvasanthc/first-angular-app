@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITasks } from './assign-task.model';
+import { CardComponent } from '../../shared/card/card.component';
 
 
 
 @Component({
   selector: 'app-assign-task',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './assign-task.component.html',
   styleUrl: './assign-task.component.scss'
 })
