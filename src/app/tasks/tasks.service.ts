@@ -6,6 +6,14 @@ import { type INewTaskData } from "./task.model";
 })
 
 export class TasksService {
+    constructor() {
+        const task = localStorage.getItem('task');
+
+        if(task) {
+            this.assignTasks = JSON.parse(task);
+        }
+    }
+
    private assignTasks = [
     {
       id: 't1',
@@ -43,10 +51,16 @@ export class TasksService {
             title: taskData.title,
             summary: taskData.summary,
             dueDate: taskData.date
-          })
+          });
+          this.saveTask();
     }
 
     removeTask(id: string) {
-        this.assignTasks = this.assignTasks.filter((task) => task.id !== id)
+        this.assignTasks = this.assignTasks.filter((task) => task.id !== id);
+        this.saveTask();
+    }
+
+    private saveTask() {
+        localStorage.setItem('task', JSON.stringify(this.assignTasks))
     }
 }
